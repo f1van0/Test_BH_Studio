@@ -28,9 +28,9 @@ namespace Game.Character
 
         private void FixedUpdate()
         {
-            var walk = _walkAction.ReadValue<Vector2>();
+            var moveDirection = _walkAction.ReadValue<Vector2>();
             if (!chargeAbility.IsCharging)
-                movement.Move(walk);
+                movement.Move(moveDirection);
 
             cameraController.RotateCamera(_lookAction.ReadValue<Vector2>());
         }
@@ -39,7 +39,9 @@ namespace Game.Character
         {
             if (chargeAbility.IsCharging) return;
 
-            chargeAbility.TriggerCharge(modelTransform.forward);
+            var moveDirection = _walkAction.ReadValue<Vector2>();
+            if (moveDirection != Vector2.zero)
+                chargeAbility.TriggerCharge(modelTransform.forward);
         }
 
         private void OnChargeCompleted(ChargeAbility _)

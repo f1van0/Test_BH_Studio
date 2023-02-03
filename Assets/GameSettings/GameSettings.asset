@@ -15,6 +15,6 @@ MonoBehaviour:
   <ChargeDistance>k__BackingField: 8
   <ChargingTime>k__BackingField: 0.6
   <InvincibilityDuration>k__BackingField: 3
-  <RequireHitCount>k__BackingField: 3
+  <RequiredScoreToFinish>k__BackingField: 3
   <MatchReloadDelay>k__BackingField: 5
   PlayerScorePrefab: {fileID: 3799956506713203315, guid: ebae20bbbecb33b49afe8d0c36c5a075, type: 3}

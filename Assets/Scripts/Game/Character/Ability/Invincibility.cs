@@ -12,20 +12,17 @@ namespace Game.Character.Ability
         [field: SyncVar] public bool IsInvincible { get; private set; }
 
 
-        public void ApplyInvincibility(Vector3 pushImpulse, float duration)
+        public void ApplyInvincibility(float duration)
         {
             if (!isServer) return;
 
             CmdSetInvincibility(true);
-            RpcActivateInvincibility(pushImpulse, duration);
+            RpcActivateInvincibility(duration);
         }
 
         [ClientRpc]
-        private void RpcActivateInvincibility(Vector3 pushImpulse, float duration)
+        private void RpcActivateInvincibility(float duration)
         {
-            if (isLocalPlayer)
-                movement.AddImpulse(pushImpulse);
-
             StartCoroutine(ShowInvincibleState(duration));
         }
 

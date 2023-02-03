@@ -24,8 +24,10 @@ namespace Game.Character.Ability
         private Vector3 _chargePosition;
         private const float PushForce = 6;
 
-        public override void OnStartServer() =>
+        private void Start()
+        {
             _detector.CollisionEnter += OnCollided;
+        }
 
         public void Initialize(GameLoopManager gameLoopManager, GameSettings settings)
         {
@@ -33,7 +35,7 @@ namespace Game.Character.Ability
             _gameSettings = settings;
         }
 
-        public void TriggerCharge(Vector3 movementNormalized)
+        public void TriggerCharge(Vector3 movementDirection)
         {
             if (isLocalPlayer)
             {
@@ -41,7 +43,7 @@ namespace Game.Character.Ability
                 var distance = _gameSettings.ChargeDistance;
                 var duration = _gameSettings.ChargingTime;
                 _movement.Move(Vector2.zero);
-                ChargeLocalClient(movementNormalized, distance, duration);
+                ChargeLocalClient(movementDirection, distance, duration);
             }
         }
 
@@ -87,11 +89,24 @@ namespace Game.Character.Ability
 
         private void OnCollided(GameObject _, Collision target)
         {
-            if (IsCharging == false || !isServer)
+            if (IsCharging == false)
                 return;
 
-            if (!target.gameObject.TryGetComponent(out CharacterContainer container)) return;
+            if (!target.gameObject.TryGetComponent(out CharacterContainer container))
+                return;
+            
+            if (!isLocalPlayer)
+                return;
+            
+            CmdCollidedWhileCharging(target.gameObject);
+        }
 
+        [Command]
+        private void CmdCollidedWhileCharging(GameObject target)
+        {
+            if (!target.gameObject.TryGetComponent(out CharacterContainer container))
+                return;
+            
             Debug.Log("[Server]: Player collided with another player while charge");
             if (container.Invincibility.IsInvincible)
             {
@@ -99,10 +114,9 @@ namespace Game.Character.Ability
                 return;
             }
 
-            var pushImpulse = target.GetContact(0).normal * PushForce;
             var invincibilityDuration = _gameSettings.InvincibilityDuration;
             _gameLoopManager.RegisterHit(netIdentity.netId, container.Identity.netId);
-            container.Invincibility.ApplyInvincibility(pushImpulse, invincibilityDuration);
+            container.Invincibility.ApplyInvincibility(invincibilityDuration);
         }
 
         private void OnDestroy() =>
