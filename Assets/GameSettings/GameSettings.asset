@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   <ChargeDistance>k__BackingField: 8
-  <ChargingTime>k__BackingField: 1.4
+  <ChargingTime>k__BackingField: 0.6
   <InvincibilityDuration>k__BackingField: 3
   <RequireHitCount>k__BackingField: 3
   <MatchReloadDelay>k__BackingField: 5

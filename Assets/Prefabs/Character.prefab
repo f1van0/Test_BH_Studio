@@ -157,7 +157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282764653000016359}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -0.375}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.375}
   m_LocalScale: {x: 0.5, y: 0.15, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -411,7 +411,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 5
-  m_AngularDrag: 0.05
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -481,7 +481,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  modelRenderer: {fileID: 0}
+  modelRenderer: {fileID: 5171117611485975115}
   movement: {fileID: 1282764653448252053}
 --- !u!114 &1282764653448252053
 MonoBehaviour:
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shouldersTransform: {fileID: 1282764653721069875}
   _rigidbody: {fileID: 1282764653448252062}
-  MaximumSpeed: 0
+  MaximumSpeed: 8
 --- !u!114 &1282764653448252050
 MonoBehaviour:
   m_ObjectHideFlags: 0
