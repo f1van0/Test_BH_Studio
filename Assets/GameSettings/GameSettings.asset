@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d53b9a02f3c4a5e86fb84e4c477d771, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  <ChargeDistance>k__BackingField: 8
+  <ChargingTime>k__BackingField: 1.4
+  <InvincibilityDuration>k__BackingField: 3
+  <RequireHitCount>k__BackingField: 3
+  <MatchReloadDelay>k__BackingField: 5
+  PlayerScorePrefab: {fileID: 3799956506713203315, guid: ebae20bbbecb33b49afe8d0c36c5a075, type: 3}
