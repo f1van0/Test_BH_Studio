@@ -11,7 +11,7 @@ namespace Script.Lobby
         private readonly AdvanceNetworkManager _advanceNetworkManager;
         private readonly LobbyUI _lobbyUI;
         private LobbyPlayer _localPlayer;
-        public List<NetworkRoomPlayer> Players => _advanceNetworkManager.PlayerSlots;
+        public List<NetworkRoomPlayer> Players => _advanceNetworkManager.roomSlots;
 
         public LobbyController(AdvanceNetworkManager advanceNetworkManager, LobbyUI lobbyUI)
         {

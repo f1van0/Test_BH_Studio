@@ -18,9 +18,9 @@ namespace Script.Game.Character
 
         private void Awake()
         {
-            _walkAction = input.actions["Walk"];
-            _chargeAction = input.actions["Charge"];
+            _walkAction = input.actions["Move"];
             _lookAction = input.actions["Look"];
+            _chargeAction = input.actions["Charge"];
             _chargeAction.performed += OnChargePerformed;
             chargeAbility.Completed += OnChargeCompleted;
         }
